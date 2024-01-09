@@ -1,0 +1,1 @@
+# Korea University Anam Hospital internal API for Python SDK
