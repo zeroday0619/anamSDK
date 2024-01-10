@@ -6,6 +6,8 @@ from src.utils import get_now_yymmdd
 
 class AnamClient(Login):
     def __init__(self, session: AsyncClient) -> None:
+
+        # Do not hardcode username and password
         super().__init__(
             session=session,
             username=os.environ.get("ANAM_USERNAME"),
