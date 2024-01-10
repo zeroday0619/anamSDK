@@ -12,7 +12,7 @@ async def main():
     ) as session:
         app = AnamClient(session=session)
         await app.sign_in()
-        resp = await app.get_medication_prescription_history(ordrYmd1=20231111, ordrYmd2=20231230)
+        resp = await app.get_payed_list(strtYmd=20231010, fnshYmd=20240110)
         print(json.dumps(resp, indent=4, ensure_ascii=False))
 
 
