@@ -5,14 +5,22 @@ from .utils import get_now_yymmdd
 
 
 class AnamClient(Login):
-    def __init__(self, session: AsyncClient) -> None:
+    def __init__(self, session: AsyncClient, username: str | None = None, password: str | None = None) -> None:
 
         # Do not hardcode username and password
-        super().__init__(
-            session=session,
-            username=os.environ.get("ANAM_USERNAME"),
-            password=os.environ.get("ANAM_PASSWORD")
-        )
+        if username or password:
+            super().__init__(
+                session=session,
+                username=username,
+                password=password
+            )
+        else:
+            super().__init__(
+                session=session,
+                username=os.environ.get("ANAM_USERNAME"),
+                password=os.environ.get("ANAM_PASSWORD")
+            )
+            
         self.anam_api_url = "https://anam.kumc.or.kr/api"
         self.is_sign_in_executed = False
     
